@@ -1,0 +1,39 @@
+.label {
+  font-family: var(--font-alt);
+  font-size: 0.63rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--color-green);
+}
+
+.title {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.accent {
+  color: var(--color-green);
+}
+
+.center {
+  text-align: center;
+}
+
+.center .label {
+  justify-content: center;
+}

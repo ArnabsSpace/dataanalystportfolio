@@ -1,0 +1,33 @@
+.footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.text {
+  font-family: var(--font-alt);
+  font-size: 0.63rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.brand {
+  font-family: var(--font-alt);
+  font-size: 0.63rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-green);
+}
+
+@media (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,18 @@
+/* All global styles and design tokens are in src/styles/globals.css */
+/* This file is kept minimal — only root-level mount resets */
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+.mainBoxWrap {
+  width: 1126px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-inline: 1px solid #1e2d3d;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}

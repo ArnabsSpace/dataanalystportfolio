@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ─── Reset ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Design Tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --color-black:  #050505;
+  --color-dark:   #0a0e17;
+  --color-navy:   #0d1117;
+  --color-card:   #111827;
+  --color-border: #1e2d3d;
+
+  /* Brand Accents */
+  --color-green:  #00ff87;
+  --color-cyan:   #00d4ff;
+  --color-orange: #ff6b35;
+  --color-blue:   #4d9fff;
+
+  /* Text */
+  --color-text:   #e8eaf0;
+  --color-muted:  #6b7a8d;
+
+  /* Typography */
+  --font-head: 'Bebas Neue', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --font-alt:  'Space Grotesk', sans-serif;
+
+  /* Spacing scale */
+  --sp-xs:  0.5rem;
+  --sp-sm:  1rem;
+  --sp-md:  1.5rem;
+  --sp-lg:  2rem;
+  --sp-xl:  3rem;
+  --sp-2xl: 5rem;
+  --sp-3xl: 7rem;
+
+  /* Transitions */
+  --ease-default: 0.3s ease;
+  --ease-slow:    0.7s ease;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--color-black);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--color-dark); }
+::-webkit-scrollbar-thumb  { background: var(--color-green); border-radius: 2px; }
+
+/* ─── Keyframes ──────────────────────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1;  transform: scale(1);   }
+  50%       { opacity: .4; transform: scale(0.8); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 135, 0.2); }
+  50%       { box-shadow: 0 0 30px rgba(0, 255, 135, 0.5); }
+}
+
+/* ─── Fade-up animation (IntersectionObserver driven) ────────────────── */
+.fu {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--ease-slow), transform var(--ease-slow);
+}
+.fu.vis   { opacity: 1; transform: translateY(0); }
+.fu.d1    { transition-delay: 0.1s; }
+.fu.d2    { transition-delay: 0.2s; }
+.fu.d3    { transition-delay: 0.3s; }
+.fu.d4    { transition-delay: 0.4s; }
+.fu.d5    { transition-delay: 0.5s; }
+
+/* ─── Shared section layout ─────────────────────────────────────────── */
+.section {
+  padding: var(--sp-3xl) var(--sp-xl);
+  position: relative;
+}
+.section--dark {
+  background: var(--color-dark);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 5rem var(--sp-md);
+  }
+}
+
+/* ─── Pitch grid overlay (reused across sections) ───────────────────── */
+.pitch-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 255, 135, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 135, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Section dividers ───────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+.divider--glow {
+  background: linear-gradient(90deg, transparent, var(--color-green), transparent);
+  opacity: 0.25;
+}
+
+/* ─── Shared button styles ───────────────────────────────────────────── */
+.btn {
+  font-family: var(--font-alt);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: all var(--ease-default);
+  display: inline-block;
+  border: none;
+}
+.btn--primary {
+  background: var(--color-green);
+  color: var(--color-black);
+  font-weight: 600;
+}
+.btn--primary:hover {
+  background: #00cc6a;
+  transform: translateY(-2px);
+}
+.btn--secondary {
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.btn--secondary:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}

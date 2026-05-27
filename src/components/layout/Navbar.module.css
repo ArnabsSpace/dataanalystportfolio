@@ -1,0 +1,70 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 1.1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 5, 5, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 255, 135, 0.07);
+  transition: padding 0.3s ease;
+}
+
+.scrolled {
+  padding: 0.7rem 3rem;
+}
+
+.logo {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: var(--color-green);
+}
+
+.links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.links a {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: var(--font-alt);
+  transition: color var(--ease-default);
+}
+
+.links a:hover {
+  color: var(--color-green);
+}
+
+.cta {
+  background: transparent;
+  border: 1px solid var(--color-green);
+  color: var(--color-green);
+  padding: 0.5rem 1.2rem;
+  font-family: var(--font-alt);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--ease-default);
+  display: inline-block;
+}
+
+.cta:hover {
+  background: var(--color-green);
+  color: var(--color-black);
+}
+
+@media (max-width: 900px) {
+  .nav     { padding: 1rem 1.5rem; }
+  .scrolled { padding: 0.7rem 1.5rem; }
+  .links   { display: none; }
+}

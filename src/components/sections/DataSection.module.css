@@ -1,0 +1,175 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  transition: border-color var(--ease-default);
+}
+
+.card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.cardFull {
+  grid-column: span 2;
+}
+
+/* ── Card title ─────────────────────────────────────────────── */
+.cardTitle {
+  font-family: var(--font-alt);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+  margin-bottom: 1rem;
+}
+
+/* ── Stat bar ───────────────────────────────────────────────── */
+.statGroup {
+  margin-bottom: 1.5rem;
+}
+
+.statGroup:last-child {
+  margin-bottom: 0;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.barTeam {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  width: 60px;
+  text-align: right;
+  font-family: var(--font-alt);
+  flex-shrink: 0;
+}
+
+.barBg {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.5s ease;
+}
+
+.barVal {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text);
+  width: 32px;
+  font-family: var(--font-alt);
+}
+
+/* ── Momentum ───────────────────────────────────────────────── */
+.momentumWrap {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 80px;
+}
+
+.momentumCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: flex-end;
+  height: 80px;
+}
+
+.momBar {
+  flex: 0 0 auto;
+  width: 100%;
+  border-radius: 1px;
+  min-height: 4px;
+}
+
+.momentumLegend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.63rem;
+  color: var(--color-muted);
+  font-family: var(--font-alt);
+}
+
+.legendItem span {
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+}
+
+/* ── Pass map ───────────────────────────────────────────────── */
+.passGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  margin-top: 0.5rem;
+}
+
+.passNode {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: auto;
+  transition: transform 0.2s;
+}
+
+.passNode:hover {
+  transform: scale(1.5);
+}
+
+/* ── Tech badges ────────────────────────────────────────────── */
+.badgesWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.badge {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-alt);
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all var(--ease-default);
+  cursor: default;
+}
+
+.badge:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid     { grid-template-columns: 1fr; }
+  .cardFull { grid-column: span 1; }
+}
