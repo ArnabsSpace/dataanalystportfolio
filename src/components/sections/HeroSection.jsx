@@ -3,8 +3,11 @@ import PitchCanvas from '../ui/PitchCanvas';
 import { HERO_STATS } from '../../data';
 import styles from './HeroSection.module.css';
 
+
 /** SVG outline of a football pitch shown faintly on the right side of the hero */
 function PitchOutlineSVG() {
+
+  
   return (
     <svg className={styles.pitchSvg} viewBox="0 0 600 400" fill="none">
       <rect x="2" y="2" width="596" height="396" stroke="white" strokeWidth="3" />
@@ -18,7 +21,9 @@ function PitchOutlineSVG() {
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({ data }) {
+
+  
   return (
     <section className={styles.hero} id="hero">
       {/* Animated tactical canvas background */}
@@ -34,16 +39,18 @@ export default function HeroSection() {
       <div className={styles.content}>
         <FadeUp className={styles.tag} delay={1}>
           <span className={styles.liveDot} />
-          Football Intelligence
+          {data.tag_line}
         </FadeUp>
 
         <FadeUp tag="h1" className={styles.title} delay={2}>
-          FOOTBALL<br />THROUGH<br />
-          <span className={styles.accent}>DATA &amp; TACTICS</span>
+          <span className={styles.heroTitle}>
+    {data.hero_title}
+  </span><br />
+          <span className={styles.accent}>{data.hero_accent}</span>
         </FadeUp>
 
         <FadeUp tag="p" className={styles.sub} delay={3}>
-          Tactical Analysis · Match Insights · Data Storytelling · Video Breakdowns
+          {data.hero_description}
         </FadeUp>
 
         <FadeUp className={styles.cta} delay={4}>

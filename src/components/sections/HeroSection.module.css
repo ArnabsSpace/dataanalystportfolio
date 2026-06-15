@@ -23,7 +23,14 @@
   opacity: 0.05;
   pointer-events: none;
 }
+.titleWrapper {
+  max-width: 600px;
+}
 
+.heroTitle {
+   max-width: 600px;
+       display: inline-block;
+}
 /* ── Content ────────────────────────────────────────────────── */
 .content {
   position: relative;
@@ -84,6 +91,8 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+      align-items: center;
+    justify-content: center;
 }
 
 /* ── Stats ──────────────────────────────────────────────────── */

@@ -1,5 +1,8 @@
 import './styles/globals.css';
 
+
+import { useEffect, useState } from "react";
+import { getPageData } from "./services/api";
 // Layout
 import Navbar  from './components/layout/Navbar';
 import Footer  from './components/layout/Footer';
@@ -20,16 +23,30 @@ import ContactSection  from './components/sections/ContactSection';
  * this file is purely structural.
  */
 export default function App() {
+ const [pageData, setPageData] = useState(null);
+
+useEffect(() => {
+  async function loadData() {
+    const data = await getPageData();
+    setPageData(data);
+  }
+
+  loadData();
+}, []);
+
+if (!pageData) {
+  return <div>Loading...</div>;
+}
   return (
     <>
       <Navbar />
 
       <main className='mainBoxWrap'>
-        <HeroSection />
+        <HeroSection data={pageData} />
 
         <div className="divider divider--glow" />
 
-        <AboutSection />
+        <AboutSection data={pageData} />
 
         <div className="divider" />
 

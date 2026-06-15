@@ -28,7 +28,7 @@ function FormationSVG() {
 }
 
 /** Analyst profile / image card */
-function ProfileCard() {
+function ProfileCard({ data }) {
   return (
     <FadeUp className={styles.imageWrap}>
       <div className={styles.glowBorder} />
@@ -38,8 +38,8 @@ function ProfileCard() {
           <FormationSVG />
         </div>
         <div className={styles.cardInfo}>
-          <div className={styles.name}>SOURABH BANERJEE</div>
-          <div className={styles.role}>Football Tactical &amp; Data Analyst</div>
+          <div className={styles.name}>{data.analyst_name}</div>
+          <div className={styles.role}> {data.analyst_role}</div>
         </div>
       </div>
     </FadeUp>
@@ -47,7 +47,7 @@ function ProfileCard() {
 }
 
 /** Single skill card */
-function SkillCard({ icon, name, desc }) {
+function SkillCard({ icon, name, desc}) {
   return (
     <div className={styles.skillCard}>
       <span className={styles.skillIcon}>{icon}</span>
@@ -57,7 +57,7 @@ function SkillCard({ icon, name, desc }) {
   );
 }
 
-export default function AboutSection() {
+export default function AboutSection({ data }) {
   return (
     <section className="section section--dark" id="about">
       <div className="pitch-grid" style={{ opacity: 0.4 }} />
@@ -65,24 +65,16 @@ export default function AboutSection() {
       <SectionHeader label="01 — Profile" title="THE" accent="ANALYST" />
 
       <div className={styles.grid}>
-        <ProfileCard />
+        <ProfileCard data={data} />
 
         <FadeUp delay={2}>
           <p className={styles.bio}>
-            <strong>Sourabh Banerjee</strong> is a football tactical and data analyst
-            with a sharp eye for the game's nuances — from high-press systems and
-            mid-block structures to xG flows and set-piece innovations.
+            {data.bio_1}
           </p>
           <p className={styles.bio}>
-            His work spans <strong>The Coaches Zone</strong>, <strong>APFA</strong>,{' '}
-            <strong>Creative Set Plays</strong>, and <strong>Medium</strong> — dissecting
-            matches, tactical philosophies, and data insights with editorial precision.
+             {data.bio_2}
           </p>
-          <p className={styles.bio}>
-            Bridging <strong>raw statistics</strong> with{' '}
-            <strong>contextual intelligence</strong>, Sourabh tells the story behind
-            the numbers.
-          </p>
+         
 
           <div className={styles.skillsGrid}>
             {SKILLS.map((s) => (
