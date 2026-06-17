@@ -1,6 +1,9 @@
 import FadeUp from '../ui/FadeUp';
 import SectionHeader from '../ui/SectionHeader';
-import { ANALYSIS_CARDS } from '../../data';
+// import { ANALYSIS_CARDS } from '../../data';
+
+import { useEffect, useState } from "react";
+import { getAnalysisData } from "../../services/api";
 import styles from './AnalysisSection.module.css';
 
 /** Per-card tactical SVG art — indexed to match ANALYSIS_CARDS order */
@@ -64,26 +67,45 @@ const COVER_SVGS = [
 ];
 
 /** Single analysis card */
-function AnalysisCard({ card, index }) {
+function AnalysisCard({ item, index }) {
   const delay = (index % 3) * 0.1;
 
   return (
-    <FadeUp className={styles.card} style={{ transitionDelay: `${delay}s` }}>
-      {/* Cover */}
+    <FadeUp
+      className={styles.card}
+      style={{ transitionDelay: `${delay}s` }}
+    >
       <div className={styles.cover}>
-        <div className={styles.coverInner} style={{ background: card.bg }}>
-          <div className={styles.coverSvg}>{COVER_SVGS[index]}</div>
+        <div
+          className={styles.coverInner}
+          style={{
+            background:
+              item.acf?.background_color ||
+              "linear-gradient(135deg,#0a1628,#1a2744)",
+          }}
+        >
+          <div className={styles.coverSvg}>
+            {COVER_SVGS[index % COVER_SVGS.length]}
+          </div>
         </div>
-        <span className={styles.cat}>{card.cat}</span>
+
+        <span className={styles.cat}>
+          {item.acf?.category}
+        </span>
       </div>
 
-      {/* Body */}
       <div className={styles.body}>
-        <h3 className={styles.title}>{card.title}</h3>
-        <p className={styles.insight}>{card.insight}</p>
+        <h3 className={styles.title}>
+          {item.acf?.title}
+        </h3>
+
+        <p className={styles.insight}>
+          {item.acf?.insight}
+        </p>
+
         <a
           className={styles.link}
-          href={card.href}
+          href={item.acf?.article_url}
           target="_blank"
           rel="noreferrer"
         >
@@ -95,14 +117,43 @@ function AnalysisCard({ card, index }) {
 }
 
 export default function AnalysisSection() {
+
+  const [analysisData, setAnalysisData] = useState([]);
+
+  useEffect(() => {
+    async function loadAnalysis() {
+      const data = await getAnalysisData();
+
+      console.log(data);
+
+      setAnalysisData(data);
+    }
+
+    loadAnalysis();
+  }, []);
+
+
+
+  if (!analysisData.length) {
+    return <div>Loading Analysis...</div>;
+  }
   return (
     <section className="section" id="analysis">
       <div className="pitch-grid" />
-      <SectionHeader label="02 — Portfolio" title="FEATURED" accent="ANALYSIS" />
+
+      <SectionHeader
+        label="02 — Portfolio"
+        title="FEATURED"
+        accent="ANALYSIS"
+      />
 
       <div className={styles.grid}>
-        {ANALYSIS_CARDS.map((card, i) => (
-          <AnalysisCard key={card.title} card={card} index={i} />
+        {analysisData.map((item, i) => (
+          <AnalysisCard
+            key={item.id}
+            item={item}
+            index={i}
+          />
         ))}
       </div>
     </section>
