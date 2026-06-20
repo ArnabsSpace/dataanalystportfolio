@@ -17,3 +17,22 @@ export async function getAnalysisData() {
 
   return data;
 }
+
+
+export async function getAnalyticsDashboardData() {
+  const response = await fetch(
+    "https://sourabh.arnabsspace.in/wp-json/wp/v2/analytics_dashboard"
+  );
+
+  const data = await response.json();
+
+  return data[0]; // first dashboard item
+}
+
+export async function getMediaById(id) {
+  const response = await fetch(
+    `https://sourabh.arnabsspace.in/wp-json/wp/v2/media/${id}`
+  );
+
+  return await response.json();
+}
