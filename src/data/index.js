@@ -154,9 +154,9 @@ export const TECH_BADGES = [
 
 // ─── Social links ─────────────────────────────────────────────────────────────
 export const SOCIAL_LINKS = [
-  { label: 'LinkedIn',   href: 'https://www.linkedin.com/in/sourabh-banerjee'        },
-  { label: 'Medium',     href: 'https://medium.com/@sourabhbanerjee94'               },
-  { label: 'Twitter / X', href: 'https://twitter.com/'                              },
+  { label: 'LinkedIn',   href: 'https://www.linkedin.com/in/sourabh-banerjee-345627229?utm_source=share_via&utm_content=profile&utm_medium=member_android'        },
+  // { label: 'Medium',     href: 'https://medium.com/@sourabhbanerjee94'               },
+  { label: 'Twitter / X', href: 'https://x.com/Sourabh58982374'                              },
 ];
 
 // ─── Nav links ────────────────────────────────────────────────────────────────

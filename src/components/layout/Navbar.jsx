@@ -2,12 +2,12 @@ import { useScrolled } from '../../hooks/useScrolled';
 import { NAV_LINKS } from '../../data';
 import styles from './Navbar.module.css';
 
-export default function Navbar() {
+export default function Navbar({ resumeUrl }) {
   const scrolled = useScrolled(60);
 
   return (
     <nav className={[styles.nav, scrolled ? styles.scrolled : ''].join(' ')}>
-      <a className={styles.logo} href="#hero">SB.</a>
+      <a className={styles.logo} href="/">SB.</a>
 
       <ul className={styles.links}>
         {NAV_LINKS.map((s) => (
@@ -19,7 +19,15 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <a className={styles.cta} href="#contact">Hire Me</a>
+      <a
+        className={styles.cta}
+        href={resumeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+      >
+        Download CV
+      </a>
     </nav>
   );
 }

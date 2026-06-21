@@ -16,6 +16,19 @@
   border-top-color: var(--color-green);
 }
 
+button.countbtn {
+    border-color: var(--color-green);
+    margin: 0px 4px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font-alt);
+    border-radius: 4px;
+}
+
 .num {
   font-family: var(--font-head);
   font-size: 4rem;
@@ -46,7 +59,17 @@
   color: var(--color-muted);
   line-height: 1.6;
 }
-
+.readMore, .loadMoreBtn {
+  font-family: var(--font-alt);
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap var(--ease-default);
+}
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
 }

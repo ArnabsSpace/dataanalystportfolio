@@ -19,9 +19,9 @@ export default function ContactSection() {
         <FadeUp delay={3}>
           <a
             className={styles.email}
-            href="mailto:sourabhbanerjee94@gmail.com"
+            href="mailto:Sourabhbaner@gmail.com"
           >
-            sourabhbanerjee94@gmail.com
+            Sourabhbaner@gmail.com
           </a>
         </FadeUp>
 

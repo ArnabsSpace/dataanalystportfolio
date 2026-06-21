@@ -1,20 +1,17 @@
 import './styles/globals.css';
 
+import { Routes, Route } from "react-router-dom";
 
+import SingleWriting from "./pages/SingleWriting";
 import { useEffect, useState } from "react";
 import { getPageData } from "./services/api";
 // Layout
 import Navbar  from './components/layout/Navbar';
 import Footer  from './components/layout/Footer';
 
-// Sections
-import HeroSection     from './components/sections/HeroSection';
-import AboutSection    from './components/sections/AboutSection';
-import AnalysisSection from './components/sections/AnalysisSection';
-import DataSection     from './components/sections/DataSection';
-import WritingSection  from './components/sections/WritingSection';
-import ToolsSection    from './components/sections/ToolsSection';
-import ContactSection  from './components/sections/ContactSection';
+import HomePage from "./pages/HomePage";
+import WritingArchive from "./pages/WritingArchive";
+
 
 /**
  * App
@@ -38,38 +35,49 @@ if (!pageData) {
   return <div>Loading...</div>;
 }
   return (
-    <>
-      <Navbar />
+  <Routes>
 
-      <main className='mainBoxWrap'>
-        <HeroSection data={pageData} />
+    <Route
+      path="/"
+      element={
+        <>
+          <Navbar resumeUrl={pageData.resume} />
 
-        <div className="divider divider--glow" />
+          <main className="mainBoxWrap">
+            <HomePage pageData={pageData} />
+          </main>
 
-        <AboutSection data={pageData} />
+          <Footer />
+        </>
+      }
+    />
 
-        <div className="divider" />
+    <Route
+      path="/writing/:slug"
+      element={
+        <>
+          <Navbar />
 
-        <AnalysisSection />
+          <main className="mainBoxWrap">
+            <SingleWriting />
+          </main>
 
-        <div className="divider divider--glow" />
-
-        <DataSection />
-
-        <div className="divider" />
-
-        <WritingSection />
-
-        <div className="divider divider--glow" />
-
-        <ToolsSection />
-
-        <div className="divider" />
-
-        <ContactSection />
-      </main>
-
-      <Footer />
-    </>
-  );
+          <Footer />
+        </>
+      }
+    />
+    <Route
+      path="/writing"
+      element={
+        <>
+          <Navbar />
+          <main className="mainBoxWrap">
+            <WritingArchive />
+          </main>
+          <Footer />
+        </>
+      }
+    />
+  </Routes>
+);
 }
